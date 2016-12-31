@@ -1,0 +1,13 @@
+histfit(a,nbin)
+histfit(a,nbin,'kernel')
+h = histfit(randn(100,1));
+set(h(1),'facecolor','g'); set(h(2),'color','m')	%change color
+
+
+probplot('normal',returndata)
+probplot('lognormal',stockpricedata)
+normplot
+qqplot
+
+pdf('Normal',x,'mu','sigma')
+plot(x,ans)

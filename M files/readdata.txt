@@ -1,0 +1,39 @@
+%list files in dir,in case its hard to type
+dir
+%change wd
+cd ('C:\Users\HongYu\Dropbox\course material\Financial Engineering\Week 5_1011-20161011T064907Z')
+%go one layer up
+cd ..\
+%go one layer down
+cd ('week 5_1011')
+%for .mat andtext files
+load dlmread
+save dlmwrite -ascii
+dlmwrite('12.csv',MARKET,',')
+save filename.txt varname -ascii
+save filename.csv varname -ascii
+%for csv
+csvread
+csvwrite
+%for spreadsheet
+xlsread
+xlswrite
+%files with text
+importdata
+textscan
+clipboard('copy', 'this has been copied');
+str = clipboard('paste');
+data = clipboard('pastespecial');
+uiimport
+%need first row and column to be names need to use{}to specify names
+[data,vnames,cnames]=tblread(filename)
+tblwrite(data,vnames,cnames,filename,delim)
+imread,imwrite
+audioread,audiowrite
+xmlread,xmlwrite
+urlread,urlwrite
+fscanf,fprintf
+writetable
+data=dataset('File','MARKET.txt')
+data=dataset('File','MARKET.csv','Delimiter',',')
+data=dataset('XLSFile','filename.xlsx')

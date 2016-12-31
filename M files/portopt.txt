@@ -1,0 +1,7 @@
+p=portfolio;
+p=setAssetMoments(p,mu,V,NumAssets);
+p=setDefaultConstraints(p,NumAssets);	%fully invested,non-negative weight
+or
+p=setBounds(p,lowerBound,UpperBound,NumAssets);
+p=setBudget(p,lowerBound,UpperBound)
+plotFrontier(p,100)
