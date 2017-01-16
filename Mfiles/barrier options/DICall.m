@@ -1,3 +1,5 @@
+%This is the analytic solution for European Down and In call option
+%Down and Out counterpart can be calculated using In out parity
 function P = DICall(S0,X,r,T,sigma,B)
 a = (B/S0)^(-1 + (2*r / sigma^2));
 b = (B/S0)^(1 + (2*r / sigma^2));
