@@ -1,17 +1,12 @@
-%list files in dir,in case its hard to type
-dir
-%change wd
-cd ('C:\Users\HongYu\Dropbox\course material\Financial Engineering\Week 5_1011-20161011T064907Z')
 %go one layer up
 cd ..\
 %go one layer down
 cd ('week 5_1011')
 %for .mat andtext files
 load dlmread
-save dlmwrite -ascii
+save 
+dlmwrite -ascii
 dlmwrite('12.csv',MARKET,',')
-save filename.txt varname -ascii
-save filename.csv varname -ascii
 %for csv
 csvread
 csvwrite
