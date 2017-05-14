@@ -1,6 +1,6 @@
-%Monte Carlo Knock Out Barrier Options
+%Crude Monte Carlo for Double Knock In Barrier Options
 %1 for Call,-1 for Put
-function [price,std,CI]=DKO_MC(S0,X,r,T,sigma,U,L,CorP,N_path)
+function [price,std,CI]=DKI_MC_Crude(S0,X,r,T,sigma,U,L,CorP,N_path)
 N=10000;
 deltaT=T/N;
 Stock=zeros(N_path,N+1);
@@ -10,10 +10,12 @@ for i=2:N+1;
     Stock(:,i)=Stock(:,i-1).*exp((r-0.5*sigma^2)*deltaT+...
     sigma*sqrt(deltaT)*epsilon(:,i-1));
 end;
+value=zeros(1,N_path);
 for i=1:N_path;
     if max(Stock(i,:))<=U&&min(Stock(i,:))>=L
-       value(i)=max(0,CorP*(Stock(i,end)-X));
-    else value(i)=0;
+            value(i)=0;
+    else value(i)=max(0,CorP*(Stock(i,end)-X));
     end
 end
 [price,std,CI]=normfit(exp(-r*T)*value);
+

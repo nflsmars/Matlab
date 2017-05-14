@@ -1,7 +1,8 @@
-%This is the function for pricing Double Knock In
-%barrier options using Ritchken Modified Trinomial
-%Model(1995),1 for Call,-1 for Put
-function price=EDKIRCKS(S0,X,r,T,sigma,U,L,CorP,N)
+%This is the function for Pricing rebate of a Double Knock Out
+%barrier options which pays 1 at maturity if break out event
+%happens before maturity using Ritchken Modified Trinomial
+%Model(1995)
+function price=EDKORCKS_Rebate(S0,r,T,sigma,U,L,N)
 deltaT=T/N;
 n=floor(log(U/S0)/(sigma*sqrt(deltaT)));
 lambda=log(U/S0)/(n*sigma*sqrt(deltaT));
@@ -17,14 +18,14 @@ Pd2=(b-a)/gamma/(1+gamma);
 Pm2=1-Pu2-Pd2;
 value=zeros(n+n2+1,N+1);
 %contruct option price tree
-value(1,N+1)=max(CorP*(U-X),0);
-value(n+n2+1,N+1)=max(CorP*(L-X),0);
+value(1,N+1)=1;
+value(n+n2+1,N+1)=1;
 for j=N:-1:1
     for i=max(n-j+2,2):min(n+j,n+n2)
         value(i,j)=exp(-r*deltaT)*(Pd*value(i+1,j+1)+Pm*value(i,j+1)+Pu*value(i-1,j+1));
     end
-    value(1,j)=(1+CorP)/2*blsprice(U,X,r,(N+1-j)/N*T,sigma)+(1-CorP)/2*(blsprice(U,X,r,(N+1-j)/N*T,sigma)-U+X*exp(-r*(N+1-j)/N*T));
-    value(n+n2+1,j)=(1+CorP)/2*blsprice(L,X,r,(N+1-j)/N*T,sigma)+(1-CorP)/2*(blsprice(L,X,r,(N+1-j)/N*T,sigma)-L+X*exp(-r*(N+1-j)/N*T));
+    value(1,j)=exp(-r*(N+1-j)/N*T);
+    value(n+n2+1,j)=exp(-r*(N+1-j)/N*T);
     value(n+n2,j)=exp(-r*deltaT)*(Pd2*value(n+n2+1,j+1)+Pm2*value(n+n2,j+1)+Pu2*value(n+n2-1,j+1));
 end
 price=value(n+1,1);

@@ -1,0 +1,20 @@
+clear all;clc;
+tic
+X=20;
+Outcome(1,1)=EDKORCKS(50,X,0.1,1,0.4,80,40,1,2000);
+Outcome(2,1)=EDKIRCKS(50,X,0.1,1,0.4,80,40,1,2000);
+Outcome(3,1)=EDKORCKS(50,X,0.1,1,0.4,80,40,-1,2000);
+Outcome(4,1)=EDKIRCKS(50,X,0.1,1,0.4,80,40,-1,2000);
+Outcome(1,2)=DKOSHP_Crude(50,X,0.1,1,0.4,80,40,1,2000);
+Outcome(2,2)=DKISHP_Crude(50,X,0.1,1,0.4,80,40,1,2000);
+Outcome(3,2)=DKOSHP_Crude(50,X,0.1,1,0.4,80,40,-1,2000);
+Outcome(4,2)=DKISHP_Crude(50,X,0.1,1,0.4,80,40,-1,2000);
+Outcome(1,3)=DKO_MC_Crude(50,X,0.1,1,0.4,80,40,1,10000);
+Outcome(2,3)=DKI_MC_Crude(50,X,0.1,1,0.4,80,40,1,10000);
+Outcome(3,3)=DKO_MC_Crude(50,X,0.1,1,0.4,80,40,-1,10000);
+Outcome(4,3)=DKI_MC_Crude(50,X,0.1,1,0.4,80,40,-1,10000);
+Outcome(1,4)=DKOSHP_ECONB(50,X,0.1,1,0.4,80,40,1,2000);
+Outcome(2,4)=DKISHP_ECONB(50,X,0.1,1,0.4,80,40,1,2000);
+Outcome(3,4)=DKOSHP_ECONB(50,X,0.1,1,0.4,80,40,-1,2000);
+Outcome(4,4)=DKISHP_ECONB(50,X,0.1,1,0.4,80,40,-1,2000);
+toc
