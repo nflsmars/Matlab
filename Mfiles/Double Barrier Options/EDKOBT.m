@@ -36,8 +36,11 @@ end
 pB=pA-log(1-pucrr)+log(pucrr);
 pC=pB-log(1-pucrr)+log(pucrr);
 logpath=zeros(NCRR+1,1);
-for i=1:NCRR
+for i=1:floor(NCRR/2)
     logpath(i+1,1)=logpath(i,1)+log(NCRR-i+1)-log(i);
+end
+for i=(floor(NCRR/2)+1):NCRR
+     logpath(i+1,1)=logpath(NCRR-i+1,1);
 end
 PA=zeros(k-1,1);PB=zeros(k-1,1);PC=zeros(k-1,1);
 NtotalA=zeros(k-1,1);NtotalB=zeros(k-1,1);NtotalC=zeros(k-1,1);

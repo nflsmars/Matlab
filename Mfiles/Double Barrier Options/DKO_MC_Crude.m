@@ -15,7 +15,7 @@ else
         sigma*sqrt(deltaT)*epsilon(:,i-1));
     end;
     for i=1:N_path;
-        if max(Stock(i,:))<=U&&min(Stock(i,:))>=L
+        if max(Stock(i,:))<U&&min(Stock(i,:))>L
             value(i)=max(0,CorP*(Stock(i,end)-X));
         else value(i)=0;
         end

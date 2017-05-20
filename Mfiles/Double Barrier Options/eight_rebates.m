@@ -1,0 +1,17 @@
+%8 types of double barrier options
+%DKO
+%DKI
+tic
+%RCK
+RCK(1,1)=EDKORCKS_Rebate(50,0.1,1,0.4,80,40,400000);
+RCK(2,1)=EDKIRCKS_Rebate(50,0.1,1,0.4,80,40,400000);
+%BT
+BT(1,1)=EDKOBT_Rebate(50,0.1,1,0.4,80,40,1000000000);
+BT(2,1)=EDKIBT_Rebate(50,0.1,1,0.4,80,40,1000000000);
+%SHP_Crude
+SHPC(1,1)=DKOSHP_Crude_Rebate(50,0.1,1,0.4,80,40,15000);
+SHPC(2,1)=DKISHP_Crude_Rebate(50,0.1,1,0.4,80,40,15000);
+%SHP_Binary
+SHPB(1,1)=DKOSHP_ECONB_Rebate(50,0.1,1,0.4,80,40,15000);
+SHPB(2,1)=DKISHP_ECONB_Rebate(50,0.1,1,0.4,80,40,15000);
+toc
